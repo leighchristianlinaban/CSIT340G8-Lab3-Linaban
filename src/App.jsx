@@ -1,33 +1,25 @@
 const Header = (props) => {
   return (
-    <div>
-      <h1>{props.course}</h1>
-    </div>
+    <h1>{props.course}</h1>
   )
 }
 
-const Part = (props) => {
-  return (
-    <p>{props.part.name} {props.part.exercises}</p>
-  )
-}
+const Part = ({ part }) => (
+  <p>{part.name} {part.exercises}</p>
+)
 
-const Content = (props) => {
-  return (
-    <div>
-      {props.parts.map(part =>
-        <Part key={part.name} part={part} />
-      )}
-    </div>
-  )
-}
+const Content = ({ parts }) => (
+  <div>
+    {parts.map(part =>
+      <Part key={part.name} part={part} />
+    )}
+  </div>
+)
 
-const Total = (props) => {
-  const total = props.parts.reduce((sum, part) => sum + part.exercises, 0)
+const Total = ({ parts }) => {
+  const total = parts.reduce((sum, part) => sum + part.exercises, 0)
   return (
-    <div>
-      <p>Number of exercises {total}</p>
-    </div>
+    <p>Number of exercises {total}</p>
   )
 }
 
